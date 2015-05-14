@@ -1,0 +1,23 @@
+<div class="success-template" class="container-fluid">
+  <div class="row-fluid">
+
+  	<br><br>
+		<div class="field col-sm-12 col-md-8 col-md-offset-2">
+
+			<div class="textbox">
+				<h1>求人広告が掲載されました。</h1>
+
+				<div>
+					<% if @send_email == "1" %>
+						<%= @job.email %>に電子レシートが送信されました。
+					<% end %>
+      	</div>
+			</div><br>
+
+			<div>
+				<%= link_to "掲載広告を確認", job_path(params[:id]), class: "btn btn-primary" %>
+				<%= link_to "ホームに戻る", root_path, class: "btn btn-default" %>
+			</div>
+		</div>
+	</div>
+</div>

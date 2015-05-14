@@ -1,0 +1,12 @@
+<div id="header-basic" class="row col-xs-12 col-md-8 col-md-offset-2">
+	<div class="social-buttons">
+		<%= link_to image_tag("twitter.png"), "http://twitter.com/shokuget", target: "_blank", class: "jstip", data: { toggle: "tooltip", placement: "bottom" }, title: "Twitter" %>
+		<%= link_to image_tag("facebook.png"), "http://facebook.com/shokuget", target: "_blank", class: "jstip", data: { toggle: "tooltip", placement: "bottom" }, title: "facebook" %>
+  	<%= link_to image_tag("envelope.png"), contact_path, :onclick=>"window.open(this.href,'popup_form', 'height=500, width=460, top=200px, left=100px, directories=no, location=no, menubar=no, status=no, titlebar=no, toolbar=no, status=no');return false;", class: "feedback jstip", data: { toggle: "tooltip", placement: "bottom" }, title: "お問い合わせ" %> 
+	</div>
+
+	<div class="shokuget-logo">
+		<%= link_to image_tag("shokuget-logo.png", width: "200", alt: "shokuget-new-york-logo"), root_path, id: "shokuget-new-york-logo", class: "hidden-sm hidden-xs" %>
+		<%= link_to image_tag("shokuget-logo-small.png", width: "100", alt: "shokuget-new-york-logo"), root_path, id: "shokuget-new-york-logo", class: "visible-sm visible-xs" %>
+	</div>
+</div>

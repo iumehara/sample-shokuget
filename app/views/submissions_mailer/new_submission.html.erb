@@ -1,0 +1,123 @@
+<div style="text-align:center;">
+  <div style="display:inline-block; text-align:left;">
+		<div style="color:white;">&nbsp;</div>
+			<div style="border: 1px solid black; padding: 0; width: 600px; color:black;">
+
+				<div style="padding: 20px 80px; background-color:#428BCA;">
+					<%= image_tag("http://shokuget.com/assets/shokuget-logo-f66225eb3df6f40f6b10d1a55c847df2.png", width: "100", alt: "shokuget-new-york-logo") %>
+        </div>
+
+				<div style="padding: 50px 80px;">
+
+			    <h4><%= @job.company %></h4>
+			    <div>採用ご担当者様</div><br>
+
+			    <div>
+			    	<div>この度は職Getをご利用いただきまして誠に有難うございます。</div><br>
+
+						<div>
+							<%= @job.created_at.strftime("%_m月%e日") %>にご掲載いただきました御社の求人広告(Job#<%= @job.id %> | <%= @job.title  %>)に応募がございましたのでお知らせ致します。職Get応募者フィルター機能により選出された応募者の履歴書を本Eメールにて添付させていただきますので、ご査収下さい。
+						</div><br>
+
+						<div>
+							<div><b>応募者名</b>：<%= @submission.name %></div><br>
+							<div><b>応募者連絡先（Eメール）</b>：<%= @submission.from_email %></div><br>
+							<div>
+								<b>志望動機：</b>
+								<div>
+									<%= @submission.content %>
+								</div>
+
+							</div><br>
+
+
+							<% if  @submission.filters.count > 0 %>
+								<b>応募フィルターへの回答</b>
+								<table style="border:1px solid black; width: 440px;">
+									<thead>
+										<th style="border:1px solid black; text-align: center;">質問</th>
+										<th style="border:1px solid black; text-align: center;">回答</th>
+									</thead>
+									<tbody>
+										<% @submission.filters.each do |filter| %>
+											<tr>
+												<td><%= filter.q_text %></td>
+												<td><%= filter.answer %></td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
+							<% end %>
+
+						</div><br>
+
+ 						<div>
+ 							応募者の履歴書をご覧になっていただき、是非一度面接の機会を設けていただければと思います。
+ 						</div>
+ 					</div>
+
+					<hr>
+
+					<div>
+						<h4 style="text-align:center;">ご注文後の変更等について</h4>
+						<div>
+							掲載内容の修正をされたい場合は、以下のボタンより訂正ページをアクセスし、掲載内容を変更することが可能です。
+						</div><br>
+
+						<table style="padding: 20px 0;">
+							<tr>
+								<td style="width: 100px;"></td>
+								<td>
+								<div style="display:block; width: 200px;">
+									<a href="<%= edit_job_url(id: @job.id, token: @job.token) %>" style="color:white; text-decoration:none; background-color:#428BCA; display: block; padding: 10px 0; text-align:center; border-bottom:2px solid #2B99BB; border-radius: 3px;">掲載された広告を訂正</a>
+<!-- 									<a href="http://shokuget.com/jobs/<%= @job.id %>/edit?token=<%= @job.token %>" style="color:white; text-decoration:none; background-color:#428BCA; display: block; padding: 10px 0; text-align:center; border-bottom:2px solid #2B99BB; border-radius: 3px;">掲載された広告を訂正</a>
+ -->								</div>
+								</td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+
+ 					<hr>
+
+ 					<div>
+ 						<div>
+ 							何かご不明な点がございましたらご遠慮なくお問い合わせ下さい。
+ 						</div><br>
+
+						<div>職Get.comを今後ともどうぞよろしくお願いします。</div><br>
+
+						<div style="font-weight:bold;">職Get.com カスタマーサービス</div>
+						<div>web: <a href="http://shokuget.com" target="_blank">http://shokuget.com/</a></div>
+						<div>email: <a href="mailto:contac@shokuget.com">contact@shokuget.com</a></div>
+
+			    </div><br>
+
+
+
+				</div>
+
+				<div style="height:80px; background-color:black; padding: 30px;">
+					<table style="padding:20px;">
+						<tr>
+							<td style="width: 40px;">
+								<a href="http://www.facebook.com/shokuget" target="_blank">
+							  		<img src="https://gallery.mailchimp.com/d7952b3f9c7215024f55709cf/images/fb.png" style="width: 30px; height: 30px;" width="30" height="30">
+								</a>
+							</td>
+							<td style="width: 40px;">
+								<a href="http://twitter.com/shokuget" target="_blank">
+		 						  <img src="http://gallery.mailchimp.com/d7952b3f9c7215024f55709cf/images/tw.png" style="width: 30px; height: 30px;" width="30" height="30">
+								</a>
+							</td>
+					    <td style="width: 400px; text-align: right; color:#717983; text align:right;">
+					    	<span style="color:#717983">Copyright (c) 2014 -</span> <a href="http://shokuget.com" style="color:#717983;text-decoration:none;">ShokuGet</a>
+					    </td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+		<div>
+	</div>
+</div>

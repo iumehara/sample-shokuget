@@ -1,0 +1,149 @@
+<div class="container-fluid jobs-new" ng-controller="JobListCtrl">
+  <div class="row-fluid">
+
+    <div class="col-lg-12 row-fluid">
+	
+			<div class="col-lg-8 col-lg-offset-2">
+				<div class="breadcrumbs">
+					<div class="desc">広告作成から購入・投稿までの3ステップ</div>
+					<div class="item active">1. 広告作成</div>
+					<div class="item">2. 広告内容の確認</div>
+					<div class="item">3. 購入と投稿</div>
+				</div>
+			</div>
+
+			<div class="col-lg-8 col-lg-offset-2">
+				<h1>1. 広告作成</h1>
+				<hr>
+				<form accept-charset="UTF-8" action="/jobs" class="new_job" id="new_job" method="post" role="form">
+
+  <div class="col-xs-12">
+  </div><div class="clearfix"></div><br>
+  
+  <input id="token" name="token" type="hidden" />
+
+  <div class="field col-xs-12">
+    <label for="job_title">タイトル</label>
+    <input class="form-control" id="job_title" name="job[title]" placeholder="記入例：コーポレート・プランニング・マネージャー" type="text" />
+  </div><div class="clearfix;"></div>
+
+  <div class="select_field">
+
+    <div class="field col-sm-3">
+      <label for="job_industry">職種</label><br>
+      <select ng-model="industry" ng-options="i for i in industries" ng-init="industry=industries[0]" class="form-control">
+			</select>
+    </div>
+    
+    <div class="field col-sm-3">
+      <label for="job_location">勤務地</label><br>
+      <select ng-model="location" ng-options="l for l in locations" ng-init="location=locations[0]" class="form-control"></select>
+    </div>
+
+    <div class="field col-sm-3">
+      <label for="job_type_of">タイプ</label><br>
+      <select ng-model="type_of" ng-options="t for t in type_ofs" ng-init="type_of=type_ofs[0]" class="form-control" ></select>
+    </div>
+
+    <div class="field col-sm-3">
+      <label for="job_visa">ビザサポート</label><br>
+      <select ng-model="visa" ng-options="v for v in visas" ng-init="visa=visas[0]" class="form-control"></select>
+    </div>
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <label for="job_description">職務内容</label><br>
+    <textarea class="form-control" id="description-text" name="job[description]" placeholder="al;skdfj">
+</textarea>
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <label for="job_company">企業名</label><br>
+    <input class="form-control" id="job_company" name="job[company]" placeholder="記入例：マイカンパニー株式会社" type="text" />
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <label for="job_url">企業ホームページ</label><br>
+    <input class="form-control" id="job_url" name="job[url]" placeholder="記入例：http://www.mycompany.com" type="text" />
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <label for="job_email">連絡メール</label><br>
+    <input class="form-control" id="job_email" name="job[email]" placeholder="記入例：taro@mycompany.com" type="text" />
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <label for="job_apply_info">応募方法</label><br>
+  <textarea type="text" ng-model="newJob.apply_info" class="form-control" id="job_apply_info" name="job[apply_info]" placeholder="記入例：taro@mycompany.comまで履歴書とカバーレターをお送りください。メールの件名に「マイカンパニー社コーポレート・プランニング・マネージャー応募者」とつけてください。">
+</textarea>
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <label for="job_apply_info">応募方法開示の質問</label><br>
+            <table class="col-xs-12" style="border: 1px solid gray;">
+              <thead>
+                <tr>
+                  <th class="col-xs-1" style="border: 1px solid gray;">追加する</th>
+                  <th class="col-xs-7" style="border: 1px solid gray;">質問</th>
+                  <th class="col-xs-4" style="border: 1px solid gray;">必要条件</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center;">
+                    <input type="checkbox" name="selectedIndustries[]" value="{{industryName}}" ng-checked="selection.indexOf(industryName) > -1" ng-click="toggleSelection(industryName)" >
+                  </td>
+                  <td>{{location}}に勤務することができる</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;">
+                    <input type="checkbox" name="selectedIndustries[]" value="{{industryName}}" ng-checked="selection.indexOf(industryName) > -1" ng-click="toggleSelection(industryName)" >
+                  </td>
+                  <td>{{industry}}業界での経験年数</td>
+                  <td>
+                    <span class="col-xs-4">
+                      <input class="form-control" type="number" />
+                    </span>年</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;">
+                    <input type="checkbox" name="selectedIndustries[]" value="{{industryName}}" ng-checked="selection.indexOf(industryName) > -1" ng-click="toggleSelection(industryName)" >
+                  </td>
+                  <td>ビザサポートを必要としますか？</td>
+                  <td>{{visa==="有" ? "する" : "しない"}}</td>
+                </tr>
+              </tbody>
+            </table>  
+
+  </div><div class="clearfix"></div>
+
+<hr>
+  <div class="field col-xs-12">
+    <div class="col-xs-12"  style="border: 1px solid gray;">
+      <h3>応募方法</h3>
+        <div class="col-xs-10 col-xs-offset-1" style="border: 1px solid gray;">
+          応募方法：{{newJob.apply_info}}
+        </div>
+    </div>
+  </div>
+</form>
+
+<div class="clearfix"></div>
+
+<%= form_for @job do |f| %>
+  <%= f.text_field :industry, ng: {model: "industry"} %>
+
+  <div class="actions col-xs-12">
+      <input class="btn btn-primary" name="commit" type="submit" value="作成してステップ２に進む" />
+  </div><div class="clearfix"></div>
+
+<% end %>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+    

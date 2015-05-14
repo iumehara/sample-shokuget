@@ -1,0 +1,25 @@
+<div id="effective" class="col-sm-12" style="text-align: center; margin-top: 200px;">
+	<h2>効果的</h2>
+	<div>職Get特有の人材フィルター機能であなたの会社に最適な人材を抜擢します。</div>
+	<div>事前に仕事の</div>
+	<%= link_to "求人募集の掲載はこちら", '#', class: "btn btn-warning", "data-toggle" => "modal", "data-target" => "#myModal" %>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:black;">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">広告を掲載される企業様へ</h4>
+	      </div>
+
+	      <div class="modal-body">
+	        職Getへの広告掲載はベータ期間中はプロモーションコードを発行された企業様に限定しております。広告を掲載するには、投稿時にプロモーションコードの入力が必要になります。
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+					<%= link_to "プロモーションコード申請", contact_path, :onclick=>"window.open(this.href,'popup_form', 'height=500, width=460, top=200px, left=100px, directories=no, location=no, menubar=no, status=no, titlebar=no, toolbar=no, status=no');return false;", class: "feedback jstip", data: { toggle: "tooltip", placement: "bottom", dismiss: "modal" }, title: "お問い合わせ", class: "btn btn-default" %>
+					<%= link_to "広告を作成する", new_job_path, class: "btn btn-primary" %>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

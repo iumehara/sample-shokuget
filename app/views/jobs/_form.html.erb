@@ -1,0 +1,211 @@
+<%= form_for @job, html: {role: "form"} do |f| %>
+  <% if @job.errors.any? %>
+    <div>
+      <div id="error_explanation" class="col-xs-12">
+        <h3>以下の<%= @job.errors.count %>件のエラーのため、作成できませんでした:</h3>
+
+        <ul>
+        <% @job.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <%= hidden_field_tag :token, params[:token] %>
+
+  <div class="field col-xs-12">
+    <%= f.label :title, "タイトル【必須】" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "記入例：コーポレート・プランニング・マネージャー" %>
+  </div><div class="clearfix;"></div>
+
+  <div class="select_field">
+    <div class="field col-sm-3">
+      <%= f.label :industry, "職種【必須】" %>
+      <%= f.select :industry, INDUSTRY, {}, class: "form-control" %>
+    </div>
+
+    <div class="field col-sm-3">
+      <%= f.label :location, "勤務地【必須】" %><span class="required"></span>
+      <%= f.select :location, LOCATION, {}, class: "form-control" %>
+    </div>
+
+    <div class="field col-sm-3">
+      <%= f.label :type_of, "勤務形態【必須】" %>
+      <%= f.select :type_of, TYPE, {}, class: "form-control" %>
+    </div>
+
+    <div class="field col-sm-3">
+      <%= f.label :visa, "ビザサポート【必須】" %>
+      <%= f.select :visa, [["有", true], ["無", false]], {}, class: "form-control" %>
+    </div>
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <%= f.label :description, "職務内容【必須】" %>
+    <%= f.text_area :description, id: "description-text", class: "form-control" %>
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <%= f.label :company, "企業名【必須】" %>(企業名を開示できない場合は、「日系証券会社」など会社を表す言葉を入力してください。)
+    <%= f.text_field :company, class: "form-control", placeholder: "記入例：マイカンパニー株式会社" %>
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <%= f.label :url, "企業ホームページ" %>
+    <%= f.text_field :url, class: "form-control", placeholder: "記入例：http://www.mycompany.com" %>
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <%= f.label :email, "担当者様Eメールアドレス【必須】" %>(応募者には開示されません。)
+    <%= f.text_field :email, class: "form-control", placeholder: "記入例：taro@mycompany.com" %>
+  </div><div class="clearfix"></div>
+
+  <div class="field col-xs-12">
+    <%= f.label :recruiter_name, "担当者様の採用企業との関係" %><br>
+
+    <%= radio_button_tag :recruiter_radio, true, true, "ng-model" => "recruiter", "ng-value" => true, "ng-checked" => true, "ng-init" => "recruiter=true" %>
+    <%= label_tag :recruiter_radio_true, "自社", style: "font-weight:normal;" %><br>
+    <%= radio_button_tag :recruiter_radio, false, false, "ng-model" => "recruiter", "ng-value" => false %>
+    <%= label_tag :recruiter_radio_false, "人材紹介会社（会社名を記入ください）", style: "font-weight:normal;" %>
+    <%= f.text_field :recruiter_name, class: "form-control", placeholder: "記入例：New York Recruiters, Co.", "ng-disabled" => "recruiter" %>
+  </div><div class="clearfix"></div>
+
+  <div class="col-sm-12" ngShow="formIsFilled">
+    <div class="row-fluid col-sm-12" style="border:1px solid black; padding: 10px;">
+
+      <div class="row-fluid">
+        <b>職Get 応募者フィルター機能</b><span class="jspopover" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="職Get応募フィルターは応募者の適正をフィルターするため、求職者に応募時に回答いただく質問です。企業様に事前に質問内容と応募者に求める回答を選定いただくことで、応募者の適正を自動的に図ることができます。" style="font-size: 12px; color: blue; margin-left: 10px;">’職Get 応募者フィルター’とは？</span><br>
+        応募者に対する必要条件として該当する項目をチェックしてください。これにより条件に満たない応募者を除き適格な応募者だけに絞ることが出来ます。<br>
+      </div><br>
+
+      <div class="row-fluid col-sm-12 filter-section">
+        <div class="col-sm-12">
+          <span class="col-sm-8"><b>職務経験に関する質問</b></span>
+          <span class="col-sm-4">応募者に求める最低経験年数</span>
+        </div>
+        <% @work_filters.each_with_index do |filter, index| %>
+          <%= hidden_field_tag "filter[#{index}][section]", filter.section || "work" %>
+          <%= hidden_field_tag "filter[#{index}][q_text]", filter.q_text %>
+          <%= hidden_field_tag "filter[#{index}][a_type]", filter.a_type %>
+          <%= hidden_field_tag "filter[#{index}][select_options]", filter.select_options.to_json %>
+          <div class="col-sm-12 filter <%= filter.a_type %>" ng-class="{highlight: checked<%= index %>}">
+            <label class="col-sm-9 question">
+              <% @checked = "checked#{index}=true" if filter.id %>
+              <span class="col-sm-1"><%= check_box_tag "filter[#{index}][selected]", true, {}, "ng-model" => "checked#{index}", "ng-init" => "#{@checked}" %></span>
+              <span class="col-sm-11"><%= filter.q_text %></span>
+            </label>
+            <span class="col-sm-3">
+              <div class="col-sm-5">
+                <%= select_tag "filter[#{index}][a_int]", options_for_select(filter.select_options, filter.a_int), class: "form-control input-sm" %>
+              </div>
+            </span>
+          </div>
+
+        <% end %>
+      </div>
+
+      <div class="row-fluid col-sm-12 filter-section">
+        <div class="col-sm-12">
+          <span class="col-sm-8"><b>語学力に関する質問</b></span>
+          <span class="col-sm-4">応募者に求める最低語学レベル</span>
+        </div>
+        <% @language_filters.each_with_index do |filter, index| %>
+          <%= hidden_field_tag "filter[#{index + @language_offset}][section]", filter.section || "language" %>
+          <%= hidden_field_tag "filter[#{index + @language_offset}][q_text]", filter.q_text %>
+          <%= hidden_field_tag "filter[#{index + @language_offset}][a_type]", filter.a_type %>
+          <%= hidden_field_tag "filter[#{index + @language_offset}][select_options]", filter.select_options.to_json %>
+          <div class="col-sm-12 filter <%= filter.a_type %>" ng-class="{highlight: checked<%= index + @language_offset %>}">
+            <label class="col-sm-9 question">
+              <% @checked = "checked#{index + @language_offset}=true" if filter.id %>
+              <span class="col-sm-1"><%= check_box_tag "filter[#{index + @language_offset}][selected]", true, {}, "ng-model" => "checked#{index + @language_offset}", "ng-init" => "#{@checked}" %></span>
+              <span class="col-sm-11"><%= filter.q_text %></span>
+            </label>
+            <span class="col-sm-3">
+              <div class="col-sm-9">
+                <%= select_tag "filter[#{index + @language_offset}][a_int]", options_for_select(filter.select_options, filter.a_int), class: "form-control input-sm" %>
+              </div>
+            </span>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row-fluid col-sm-12 filter-section">
+        <div class="col-sm-12">
+          <span class="col-sm-8"><b>教育に関する質問</b></span>
+          <span class="col-sm-4">応募者に求める最低条件</span>
+        </div>
+        <% @education_filters.each_with_index do |filter, index| %>
+          <%= hidden_field_tag "filter[#{index + @education_offset}][section]", filter.section || "education" %>
+          <%= hidden_field_tag "filter[#{index + @education_offset}][q_text]", filter.q_text %>
+          <%= hidden_field_tag "filter[#{index + @education_offset}][a_type]", filter.a_type %>
+          <%= hidden_field_tag "filter[#{index + @education_offset}][select_options]", filter.select_options.to_json %>
+          <div class="col-sm-12 filter <%= filter.a_type %>" ng-class="{highlight: checked<%= index + @education_offset %>}">
+            <label class="col-sm-9 question">
+              <% @checked = "checked#{index + @education_offset}=true" if filter.id %>
+              <span class="col-sm-1"><%= check_box_tag "filter[#{index + @education_offset}][selected]", true, {}, "ng-model" => "checked#{index + @education_offset}", "ng-init" => "#{@checked}" %></span>
+              <span class="col-sm-11"><%= filter.q_text %></span>
+            </label>
+            <span class="col-sm-3">
+              <div class="col-sm-12">
+                <% if index == 1 %>
+                Ctrlキー（Macではcommandキー）を押しながら複数選択可能
+                  <%= select_tag "filter[#{index + @education_offset}][a_string]", options_for_select(filter.select_options, filter.a_string), class: "form-control input-sm", multiple: true %>
+                <% else %>
+                  <%= select_tag "filter[#{index + @education_offset}][a_int]", options_for_select(filter.select_options, filter.a_int), class: "form-control input-sm" %>
+                <% end %>
+              </div>
+            </span>
+          </div>
+        <% end %>
+      </div>
+
+
+
+      <div class="row-fluid col-sm-12 filter-section">
+        <div class="col-sm-12">
+          <span class="col-sm-8"><b>マイクロソフト　オフィスに関する質問</b></span>
+          <span class="col-sm-4">応募者に求める経験</span>
+        </div>
+        <% @software_filters.each_with_index do |filter, index| %>
+          <%= hidden_field_tag "filter[#{index + @software_offset}][section]", filter.section || "software" %>
+          <%= hidden_field_tag "filter[#{index + @software_offset}][q_text]", filter.q_text %>
+          <%= hidden_field_tag "filter[#{index + @software_offset}][a_type]", filter.a_type %>
+          <%= hidden_field_tag "filter[#{index + @software_offset}][select_options]", filter.select_options.to_json %>
+          <div class="col-sm-12 filter <%= filter.a_type %>" ng-class="{highlight: checked<%= index + @software_offset %>}">
+            <label class="col-sm-6 question">
+              <% @checked = "checked#{index + @software_offset}=true" if filter.id %>
+              <span class="col-sm-1"><%= check_box_tag "filter[#{index + @software_offset}][selected]", true, {}, "ng-model" => "checked#{index + @software_offset}", "ng-init" => "#{@checked}" %></span>
+              <span class="col-sm-11"><%= filter.q_text %></span>
+            </label>
+            <span class="col-sm-6">
+              <div class="col-sm-12">
+                <%= select_tag "filter[#{index + @software_offset}][a_int]", options_for_select(filter.select_options, filter.a_int), class: "form-control input-sm" %>
+              </div>
+            </span>
+          </div>
+        <% end %>
+      </div>
+
+
+    </div><div class="clearfix"></div>
+  </div><br>
+
+
+  <div class="actions col-sm-12">
+    <br>
+    <% if @job.active? %>
+      <%= link_to "キャンセル", job_path(@job.id), class: "btn btn-default", style: "margin-right: 20px;" %>
+      <%= f.submit "編集する", class: "btn btn-primary", style: "margin-right: 20px;" %>
+      <%= link_to "削除する", job_path(@job.id), method: :delete, data: { confirm: "削除された広告は回復できません。広告を削除する場合はOKをクリックしてください。"}, class: "btn btn-danger" %>
+    <% elsif @job.id %>
+      <%= link_to "編集せずにステップ２に戻る", review_job_path(id: @job.id, token: @job.token), class: "btn btn-default", style: "margin-right: 20px;" %>
+      <%= f.submit "この内容でOK！", class: "btn btn-primary", style: "margin-right: 20px;" %>
+      <%= link_to "削除する", job_path(@job.id), method: :delete, data: { confirm: "削除された広告は回復できません。　広告を削除する場合はOKをクリックしてください。　削除しない場合はCancelをクリックしてください。"}, class: "btn btn-danger" %>
+    <% else %>
+      <%= f.submit "ステップ２に進む", class: "btn btn-primary" %>
+    <% end %>
+  </div><div class="clearfix"></div><br>
+
+<% end %>

@@ -1,0 +1,124 @@
+<div style="text-align:center;">
+  <div style="display:inline-block; text-align:left;">                     
+		<div style="color:white;">&nbsp;</div>
+			<div style="border: 1px solid black; padding: 0; width: 600px; color:black;">
+
+				<div style="padding: 20px 80px; background-color:#428BCA;">
+					<%= image_tag("http://shokuget.com/assets/shokuget-logo-f66225eb3df6f40f6b10d1a55c847df2.png", width: "100", alt: "shokuget-new-york-logo") %>
+        </div>
+
+				<div style="padding: 50px 80px;">
+					<div>
+						このメールはお客様の職Getでの求人広告ご掲載に関する大切なメールです。
+					</div>
+
+			    <h3><%= @job.company %>様</h3>
+
+					<div>職Getのカスタマーサービスです。</div>
+					<div>この度は当社をご利用頂きまして誠にありがとうございます。</div>
+					<div>下記の内容でご注文を承りました。</div>
+					<hr>
+					<h4>ご注文内約</h4>
+					<hr>
+					<div>内容をご確認頂きますようお願い致します。</div><br>
+
+					<div>
+						<div>ご注文番号：<%= @job.id %></div><br>
+		      	<table>
+		          <tr>
+		            <td>求人広告</td>
+		            <td style="text-align:right;">$100</td>
+		          </tr>
+		          <tr>
+		            <td>オートフィルター</td>
+		            <td style="text-align:right;">$0</td>
+		          </tr>
+		          <tr>
+		            <td>ソーシャル・アウトリーチ</td>
+		            <td style="text-align:right;">$0</td>
+		          </tr>
+		          <tr style="font-weight:bold; border-top:1px solid black;">
+		            <td>料金合計</td>
+		            <td style="text-align:right;">$100</td>
+		          </tr>
+		          <tr>
+		            <td>プロモーションコード割引 </td>
+		            <td>- $100</td>
+		          </tr>
+		          <tr style="font-weight:bold; border-top:1px solid black;">
+		            <td>オーダー合計</td>
+		            <td style="text-align: right;">$0</td>
+		          </tr>
+		        </table>
+		      </div><br>
+
+					<hr>
+					<div>
+						<h4>ご注文後のキャンセル、変更等について</h4>
+						<hr>
+						<div>
+							ご注文頂いた本広告掲載サービスは、ご掲載と同時に料金が発生するため、ご注文確定後のキャンセルはお受け致しかねます。
+						</div><br>
+						<div>
+							なお、掲載内容の修正をされたい場合は、以下のボタンより訂正ページをアクセスし、掲載内容を変更することが可能です。
+						</div>	
+					</div>	
+					<table style="padding: 20px 0;">
+						<tr>
+							<td style="width: 100px;"></td>
+							<td>
+								<div style="display:block; width: 200px;">
+									<a href="http://shokuget.com/jobs/<%= @job.id %>/edit?token=<%= @job.token %>" style="color:white; text-decoration:none; background-color:#428BCA; display: block; padding: 10px 0; text-align:center; border-bottom:2px solid #2B99BB; border-radius: 3px;">掲載された広告を訂正する</a>
+								</div>
+							</td>
+							<td></td>
+						</tr>
+					</table>
+					<hr>
+					<div>
+						<div>
+							広告掲載期間は30日間となっております。今後、応募者からの履歴書が御社に直接送られる予定でございます。ご質問等ございましたら、ご遠慮なくご連絡頂きますようお願い致します。
+						</div><br>
+
+						<div>
+							職Get.comを今後ともどうぞよろしくお願いします。
+						</div><br>
+
+						<div style="font-weight:bold;">
+							職Get.com カスタマーサービス
+						</div>
+						<div>
+							web: <a href="http://shokuget.com" target="_blank">http://shokuget.com/</a>
+						</div>
+						<div>
+							email: <a href="mailto:contac@shokuget.com">contact@shokuget.com</a>
+						</div>
+					</div>
+
+				</div>
+
+				<div style="height:80px; background-color:black; padding: 30px;">
+					<table style="padding:20px;">
+						<tr>
+							<td style="width: 40px;">
+								<a href="http://www.facebook.com/shokuget" target="_blank">
+							  		<img src="https://gallery.mailchimp.com/d7952b3f9c7215024f55709cf/images/fb.png" style="width: 30px; height: 30px;" width="30" height="30">
+								</a>
+							</td>
+							<td style="width: 40px;">
+								<a href="http://twitter.com/shokuget" target="_blank">
+		 						  <img src="http://gallery.mailchimp.com/d7952b3f9c7215024f55709cf/images/tw.png" style="width: 30px; height: 30px;" width="30" height="30">
+								</a>
+							</td>
+					    <td style="width: 400px; text-align: right; color:#717983; text align:right;">
+					    	<span style="color:#717983">Copyright (c) 2014 -</span> <a href="http://shokuget.com" style="color:#717983;text-decoration:none;">ShokuGet</a>
+					    </td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+		<div>
+	</div>
+</div>
+

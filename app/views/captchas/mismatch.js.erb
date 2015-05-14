@@ -1,0 +1,11 @@
+/* captcha input */
+$('.captcha_input').val("");
+
+/* highlight captcha input */
+$('.captcha_input').css({'backgroundColor':'yellow'}).animate({'backgroundColor':'white'}, 1000);
+
+/* describe captcha error then fade */
+$(".captcha_notice_text").show();
+
+/* renew captcha */
+$(".captcha_image").html("<%=j image_tag @new_captcha.photo %>")

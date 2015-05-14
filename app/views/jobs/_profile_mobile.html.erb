@@ -1,0 +1,30 @@
+<div class="job-profile">
+	<h1><%= @job.title %></h1>
+
+	<h3>投稿日：<%= date_format @job.created_at %></h3>
+	<h3>会社名：<%= @job.company %></h3>
+	<h3>勤務地：<%= @job.location %></h3>
+	<h3>ビザサポート：<%= @job.visa ? "有" : "無" %></h3>
+	<h3>広告タイプ：<%= @job.recruiter_name.present? ? "人材紹介会社：#{@job.recruiter_name}" : "一般広告" %></h3>
+	<h4><%= link_to @job.url, @job.url %></h2>
+
+	<div class="social-buttons">
+		<div>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-related="jasoncosta" data-text="<%= @job.sns_text %>" data-lang="en" data-size="medium" data-count="none">Tweet</a>
+		</div>
+		<div>
+			<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div>
+		</div>
+	</div><br>
+
+	<hr>
+
+	<div class="desc">
+		<%= @job.description.try(:html_safe) %>
+	</div>
+
+	<div id="search-panel" class="panel-group" id="accordion">
+		応募方法：パソコン及びタブレット端末で同ページより応募できます。
+	</div><div class="clearfix"></div>
+</div>
+

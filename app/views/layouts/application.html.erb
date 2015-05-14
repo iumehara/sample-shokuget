@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="shokuget">
+	<head>
+	  <title>職Get New York | ニューヨーク就職サイト</title>
+    <meta name="keywords" content="ニューヨーク, 就職, 仕事, 就活, 英語, キャリア, job, career, New York" />
+    <meta name="description" content="ニューヨークでの就職活動を応援するサイトです。ニューヨークでの仕事とキャリアアップを応援してます。" />
+    <meta name="author" content="職Get New York" />
+    <%= favicon_link_tag "favicon-120x120.png", rel: 'apple-touch-icon', type: 'image/png' %>
+
+    <meta property="og:title" content="<%= og_title %>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://www.shokuget.com<%= request.fullpath %>" />
+    <meta property="og:image" content="www.shokuget.com<%= image_path("shokuget-icon-200x200.png") %>" />
+    <meta property="og:site_name" content="職Get New York | ニューヨーク就職サイト" />
+    <meta property="og:description" content="<%= og_description %>" />
+
+	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	  <%= stylesheet_link_tag    "application" %>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	</head>
+
+	<body>
+
+		<%= render 'layouts/flash' %>
+
+		<%= render 'layouts/navbar' unless params[:controller] == "feedbacks" %>
+
+		<%= render 'layouts/header' unless params[:controller] == "feedbacks" %>
+
+		<%= yield %>
+		<div class="clearfix"></div>
+
+		<%= render 'layouts/footer' unless params[:controller] == "feedbacks" %>
+
+		<% if Rails.env.development? %>
+			<script>
+				document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+			</script>
+		<% end %>
+	</body>
+
+</html>

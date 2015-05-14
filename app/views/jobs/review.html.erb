@@ -1,0 +1,62 @@
+<div id="job-review" class="main container-fluid">
+  <div class="row-fluid">
+
+  	<br><br>
+		<div class="col-sm-12 col-md-8 col-md-offset-2">
+
+			<%= render 'layouts/breadcrumbs' %>
+
+			<h1>2. 求人広告内容の確認</h1>
+			<hr>
+
+			<h3>求人広告記事に間違いが無いことを確認してください。</h3>
+			<div>以下の赤いカッコ内の文面が掲載される記事の内容です。タイトル、会社名、勤務地、職務内容等に間違いがないことを確認してください。</div>
+			<div>青い「このポジションに応募する」のボタンをクリックすると応募者フォームが見られるので、確認ください。</div><br>
+		  <div class="sample-text">広告記事のサンプル</div>
+			<%= render 'profile' %>
+
+			<hr>
+			<h3>プロモーション期間につき現在プロモーションコード($100 Off)を発行しております。お持ちでない方は、下記赤い「プロモーションコード申請」ボタンにてご申請ください。</h3>
+			<div>
+				<div>
+          <%= form_for @redemption, url: redeem_job_path(id: @job.id, token: @job.token), method: 'post' do |f| %>
+					  <% if @redemption.errors.any? %>
+					    <div>
+					      <div id="error_explanation" class="col-xs-12">
+					        <h3>以下の<%= @redemption.errors.count %>件のエラーのため、ステップ３に進むことができませんでした:</h3>
+
+					        <ul>
+					        <% @redemption.errors.full_messages.each do |msg| %>
+					          <li><%= msg %></li>
+					        <% end %>
+					        </ul>
+					      </div>
+					    </div>
+					  <% end %>
+              <div class="field col-sm-12">
+                <%= f.label :promo_code, "プロモーションコード【必須】" %><span class="jspopover" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="プロモーションコードは職Getのサービスに対して使える割引コードです。プロモーション期間中の掲載にはプロモーションコードが必須となっております。" style="font-size: 12px; color: blue;">プロモーションコードとは？</span><br>
+                <div class="col-sm-3">
+                	<% if @job.redemption.present? %>
+                		<h1><span class="label label-default"><%= @job.redemption.promo.code %></span></h1>
+                	<% else %>
+                		<%= f.text_field :promo_code, class: "form-control" %>
+                	<% end %>
+                </div>
+              </div><div class="clearfix"></div>
+							<hr>
+
+							<%= link_to "内容を修正する", edit_job_path(id: params[:id], token: params[:token]), class: "btn btn-default" %>
+
+							<% if @job.redemption.present? %>
+								<%= link_to "ステップ３に進む", new_order_path(id: @job.id, token: @job.token), class: "btn btn-primary"  %>
+							<% else %>
+								<%= link_to "プロモーションコード申請", contact_path, :onclick=>"window.open(this.href,'popup_form', 'height=500, width=460, top=200px, left=100px, directories=no, location=no, menubar=no, status=no, titlebar=no, toolbar=no, status=no');return false;", class: "feedback jstip", data: { toggle: "tooltip", placement: "bottom" }, title: "お問い合わせ", class: "btn btn-warning" %>
+
+								<%= f.submit "ステップ３に進む", class: "btn btn-primary" %>
+							<% end %>
+          <% end %><br>
+        </div>
+      </div>
+		</div>
+	</div>
+</div>

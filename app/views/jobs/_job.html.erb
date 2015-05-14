@@ -1,0 +1,7 @@
+<div>
+	<div>
+		<h4><%= link_to job.title, job_path(job.id) %></h4>
+		<h5><%= job.company %></h5>
+		<div><%= truncate(strip_tags(job.description), length: 200, omission: '・・・').html_safe %></div> 
+	</div>
+</div>

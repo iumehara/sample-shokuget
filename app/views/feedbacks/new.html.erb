@@ -1,0 +1,48 @@
+<div class="feedback_form container-fluid">
+	<div class="row-fluid submit-form">
+	
+		<div class="field col-xs-12">
+			<h1>お問い合わせフォーム</h1>
+		</div><br>
+
+		<%= form_for @feedback do |f| %>
+
+  		<div class="field col-xs-12">
+				<%= f.label '#', '宛先：', class: "control-label col-xs-3" %>
+				職GET.comカスタマーサービス
+  		</div>
+	
+		  <div class="field col-xs-12">
+				<%= f.label :name, 'お名前：', class: "control-label name-label col-xs-3" %>
+				<div class="col-xs-9">
+					<%= f.text_field :name, class: "form-control"	%>
+  			</div>   
+  		</div>
+
+		  <div class="field col-xs-12">
+		  	<%= f.label :email, 'Eメール：', class: "control-label name-label col-xs-3" %>
+				<div class="col-xs-9">
+					<%= f.text_field :email, class: "form-control" %>
+				</div>
+		  </div>
+	  
+	  <div class="field col-xs-12">
+			<%= f.label :subject, 'お問い合わせ内容：', class: "control-label subject-label col-xs-3" %>
+			<div class="col-xs-9 subject-select">
+				<%= f.select :subject, Feedback::SUBJECTS, {}, class: "form-control" %>
+	  	</div>
+	  </div>
+
+	  <div class="field col-xs-12">
+			<%= f.text_area :content, placeholder: "お問い合わせに関する詳細を入力してください", rows: 8, class: "form-control" %>
+	  </div><div class="clearfix;"></div>
+		 
+		<div class="actions col-xs-12">
+			<%= f.submit "メール送信", class: "btn btn-primary send-message" %>
+			<%= link_to "キャンセル", "#", class: "btn btn-default", onclick: "window.open('', '_self', ''); window.close();" %>
+		</div>
+
+		<% end %>
+
+	</div>
+</div>

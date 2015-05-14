@@ -1,0 +1,161 @@
+<div class="container">
+
+  <div id="about" class="container bs-docs-container">
+    <div class="row">
+      <div class="col-md-9" role="main" style="border-right:1px solid gray;">
+        <div class="bs-docs-section">
+          <div>
+            <h1 id="overview" class="page-header">職Getについて<small style="margin-left: 20px;">ABOUT SHOKUGET</small></h1>
+
+            <div>
+              <h3 id="overview-effective">【効果的】職Getフィルター機能により条件に合った人材だけを自動的に選出！</h3>
+              <div>
+                <%= image_tag "about-target.png", style: "float:left; margin-left:10px;", width: "80" %>
+                <div style="margin-left: 100px; padding: 20px;">
+                  企業の採用条件に合った人材を職Getフィルターにより自動的に選出し、求職者と企業を瞬時にコネクトします。職Getのサイト上に掲載、FacebookやTwitterなどのSNSにもポストすることでより幅広い人材広告を実現します。
+                </div>
+              </div>
+            </div><div class="clearfix;"></div>
+            <br><br>
+
+            <div>
+              <h3 id="overview-speedy">【スピーディー】企業も求職者も面倒な登録の必要なし！</h3>
+              <div>
+                <%= image_tag "about-stopwatch.png", style: "float:left; margin-left:10px;" %>
+                <div style="margin-left: 100px; padding: 20px;">
+                  広告ご掲載に登録などの面倒な手続きは一切要りません。広告ご掲載からお支払いまでたったの数分。条件に合った応募者を全て自動的に選出しますので適格な応募者の履歴書と詳細データが届くまで実質０分。
+                </div>
+              </div>
+            </div><div class="clearfix;"></div>
+            <br><br>
+
+            <div>
+              <h3 id="overview-inexpensive">【低コスト】求職者の応募は無料、企業の広告掲載は業界最安値！</h3>
+              <div>
+                <%= image_tag "about-scale.png", style: "float:left; margin-left:10px;" %>
+                <div style="margin-left: 100px; padding: 20px;">
+                  上記全てのサービスで費用は100ドルのみです*。成功報酬などの追加料金は一切かかりません。<br>
+                  <span style="font-size:12px;">*広告作成完了時にクレジットカードにてお支払いいただきます。</span>
+                </div>
+              </div>
+            </div><div class="clearfix;"></div>
+            <br><br>
+
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+
+        <hr><br>
+
+        <div class="bs-docs-section" id="about-analysis">
+          <h1 id="analysis" class="page-header">職Getはここが違う！<small>THE SHOKUGET DIFFERENCE</small></h1>
+          <div>
+            <h3 id="analysis-table">一般的な求人サービスとの違い</h3>
+            <%= render 'competitive_analysis' %>
+          </div>
+        </div>
+        <div class="clearfix"></div><br>
+
+        <hr>
+
+        <div class="bs-docs-section">
+          <div>
+            <h1 id="process" class="page-header">職Getのサービスの流れ <small>SERVICE FLOW</small></h1>
+
+            <div style="padding: 10px 0;">
+              <h3 id="process-a">１. 求人内容の設定（企業様ご入力）</h3>
+              <p>職Getの<%= link_to "オンラインフォーム", new_job_path %>を使い求人広告を作成してください。仕事内容の詳細、ビザサポートの条件に加え、応募者に要求する職務経験などの応募条件を入力してください。
+              </p>
+              <div><%= image_tag "about-filter.png" %></div>
+            </div>
+            <div class="clearfix;"></div><br>
+            <br>
+
+            <div style="padding: 10px 0;">
+              <h3 id="process-b">２. 求人広告掲載</h3>
+              <p>企業により入力されたデータを基に求人広告が掲載されます。</p>
+              <div><%= image_tag "about-post.png" %></div>
+            </div>
+            <div class="clearfix;"></div><br>
+            <br>
+
+            <div style="padding: 10px 0;">
+              <h3 id="process-c">３. SNSアウトリーチ</h3>
+              <p>職Getのサイト上に掲載、FacebookやTwitterなどのSNSにもポストすることでより幅広い層にアピールする人材広告を可能とします。</p><br>
+                <div><%= image_tag "about-facebook.png" %></div>
+            </div>
+            <div class="clearfix;"></div>
+            <br>
+            <br>
+
+            <div style="padding: 10px 0;">
+              <h3 id="process-d">４. 職Getフィルターにより選出された応募者の情報を自動的にEメールにて送付</h3>
+              <p>企業の採用条件に合った人材を職Getフィルターにより自動的に選出し、企業と瞬時にコネクトします。適格な応募者の履歴書と詳細データが企業に届くまで実質０分。</p>
+              <div><%= image_tag "about-email.png" %></div>
+            </div>
+            <div class="clearfix;"></div><br>
+            <br>
+
+            <div style="padding: 10px 0;">
+              <h3 id="process-e">５. 人材獲得！</h3>
+              <p>企業が職Getにより選出された応募者から最もフィットの良い人材を採用。</p>
+              <div><%= image_tag "about-handshake.jpeg" %></div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div><br>
+      </div>
+
+
+      <div class="col-md-3">
+        <div id="about-sidebar" class="bs-docs-sidebar hidden-print" role="complementary">
+          <ul class="nav bs-docs-sidenav">
+            <hr>
+
+            <li>
+              <h4><a href="#overview">職Getについて</a></h4>
+              <ul class="nav">
+                <li><a href="#overview-effective">効果的</a></li>
+                <li><a href="#overview-speedy">スピーディー</a></li>
+                <li><a href="#overview-inexpensive">低コスト</a></li>
+              </ul>
+            </li>
+
+            <hr>
+
+            <li>
+              <h4><a href="#analysis">職Getはここが違う！</a></h4>
+              <ul class="nav">
+              <li>
+                <a href="#analysis-table">一般的な求人サービスとの違い</a>
+              </li>
+              </ul>
+            </li>
+
+            <hr>
+
+            <li>
+              <h4><a href="#process">職Getのサービスの流れ</a></h4>
+              <ul class="nav">
+                <li><a href="#process-a">1. 求人内容の設定（企業ご入力）</a></li>
+                <li><a href="#process-b">2. 職Get求人広告掲載</a></li>
+                <li><a href="#process-c">3. SNSアウトリーチ</a></li>
+                <li><a href="#process-d">4. 職Getフィルターにより選出された応募者の情報を自動的に送付</a></li>
+                <li><a href="#process-e">5. 人材獲得！</a></li>
+              </ul>
+            </li>
+          <hr>
+
+          <li>
+            <a class="back-to-top" href="#top">トップに戻る</a>
+          </li>
+          </ul>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+

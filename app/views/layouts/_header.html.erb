@@ -1,0 +1,61 @@
+<% if params[:controller] == "jobs" && params[:action] == "index" %>
+
+
+	<% cache "header" do %>
+		<div id="header-section" class="container-fluid col-sm-12 hidden-xs">
+		  <div class="row myfilter col-sm-12"><br>
+				<div class="col-lg-10 col-lg-offset-1">
+					<div class="hidden-xs titlebar">
+						<ul>
+							<h2 style="margin: 20px 0;">
+								<div>
+								<%= image_tag("shokuget-icon-200x200.png", width: "80") %>
+								<div style="margin: 35px 20px 0 0; color: white; float:right;">で出会う魅力的な<span style="font-size:40px; color: white;">仕事</span>と優秀な<span style="font-size:40px; color:white;">人材</span></div>
+								</div>
+							</h2>
+								<div class="promo-badge">
+									<h4>企業様へ</h4>
+									<div><%= link_to "今ならプロモーション・コードの申請で広告掲載無料 ▶", contact_path(content: "プロモーションコードを申請します。"), :onclick=>"window.open(this.href,'popup_form', 'height=500, width=460, top=200px, left=100px, directories=no, location=no, menubar=no, status=no, titlebar=no, toolbar=no, status=no');return false;", class: "feedback" %></div>
+								</div>
+							<li style="font-size: 20px; list-style-type: none; margin-top: 35px;">
+								<%= link_to "職Getは企業の採用条件に合った人材を職Getフィルター* により自動的に選出し、求職者と企業様を瞬時にコネクトする全く新しいタイプの求人広告サービスです。", about_path, style: "text-shadow: 2px 2px 2px black;" %>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<% end %><%#- cache end %>
+
+	<div id="header-phone" class="visible-xs" style="border: 1px solid black; padding: 0; background-color:black;">
+	    <nav id="navbar-example" class="navbar navbar-default navbar-static navbar-inverse" role="navigation" style="padding: 0;">
+	      <div class="container-fluid">
+	        <div class="navbar-header navbar-inverse">
+	          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <%= link_to image_tag("shokuget-logo-small.png", width: "70", alt: "shokuget-new-york-logo"), root_path, id: "shokuget-new-york-logo", class: "visible-xs", style: "margin: 8px 30px;" %>
+	        </div>
+	        <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
+	          <ul class="nav navbar-nav">
+	            <li class="dropdown">
+								<a href="http://twitter.com/shokuget"><%= image_tag("twitter.png", width: "20") %><span style="margin-left: 20px;">@shokuget</span></a>
+							</li>
+	            <li class="dropdown">
+		          	<a href="http://facebook.com/shokuget"><%= image_tag("facebook.png", width: "20") %><span style="margin-left: 20px"> /shokuget</span></a>
+	            </li>
+              <li class="divider"></li>
+	            <li class="dropdown">
+		          	<a href="<%= contact_path %>"><%= image_tag("envelope.png", width: "20") %><span style="margin-left: 20px;"> お問い合わせ</span></a>
+	            </li>
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
+
+	</div>
+<% end %>
+<div class="clearfix;"></div><br>

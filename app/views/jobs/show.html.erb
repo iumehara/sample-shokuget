@@ -1,0 +1,23 @@
+<% provide(:title, @job.title) %>
+
+<div id="job-show" class="container-fluid">
+	<br><br>
+    <div class="hidden-xs col-sm-9 col-md-6 col-md-offset-2">
+			<%= render 'profile' %>
+		</div>
+
+    <div class="visible-xs">
+			<%= render 'profile_mobile' %>
+		</div>
+
+		<div class="hidden-xs col-sm-3 col-md-2">
+			<div>
+				<div class="more-jobs">同じカテゴリーのお仕事</div>
+				<% @jobs.each do |job| %>
+					<%= render job %>
+					<hr>
+				<% end %>
+			</div>
+		</div>
+
+</div>
