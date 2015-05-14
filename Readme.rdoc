@@ -1,0 +1,17 @@
+== README
+
+This is a sample repo for shokuget.com
+
+See Views folder and routes file for a general idea of the scoep of the app (the model and controller folders have been filtered.)
+
+Shokuget is a job-posting site, with the following functionality:
+
+- CRUD functionality for job listings. The Job index page has angularJS indexing/filtering/search
+
+- Orders are created when job listing are submitted by the employer
+
+- Submissions are created when job-searchers submit their credentials
+
+- Captchas are used to verify that the submissions are human.
+
+- All orders and submissions send emails to the relevant party.
